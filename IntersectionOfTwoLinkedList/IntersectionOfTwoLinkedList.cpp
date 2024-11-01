@@ -8,8 +8,8 @@ class ListNode
 public:
     int data;
     ListNode* next;
-    ListNode(int data)
-        : data(data)
+    ListNode(int d)
+        : data(d)
         , next(nullptr)
     {
     }
