@@ -58,6 +58,15 @@ ListNode* GetListFromInput(ListNode** ppHead, int count)
     return pTail;
 }
 
+void FreeList(ListNode* pNode)
+{
+    if (pNode == nullptr)
+        return;
+
+    FreeList(pNode->next);
+    delete pNode;
+}
+
 int main()
 {
     while (true)
@@ -90,5 +99,15 @@ int main()
 
         ListNode* intersectionNode = GetIntersectionNode(aHead, bHead);
         std::cout << "The intersection node is: " << (intersectionNode != nullptr ? intersectionNode->data : -1) << std::endl << std::endl;
+    
+        if (cHead != nullptr)
+        {
+            aTail->next = nullptr;
+            bTail->next = nullptr;
+        }
+        FreeList(aHead);
+        FreeList(bHead);
+        FreeList(cHead);
+
     }
 }
